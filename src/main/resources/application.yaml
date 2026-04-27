@@ -1,9 +1,9 @@
 spring:
   application:
-    name: orders
+    name: order-service
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:goridedb}?currentSchema=public
-    username: ${POSTGRES_USER:goride}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:ecommerce_orders_db}?currentSchema=public
+    username: ${POSTGRES_USER:devecommerce}
     password: ${POSTGRES_PASSWORD:12345}
     driver-class-name: org.postgresql.Driver
     hikari:
@@ -12,3 +12,15 @@ spring:
       connection-timeout: 30000
       idle-timeout: 600000
       max-lifetime: 1800000
+server:
+  port: 8082
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/order-service.logs
